@@ -1,5 +1,38 @@
-8:看多少个块（json文件）
-10：把块文件导出成txt
-11：把txt还原成json
+造梦西游4 配置解包工具（zm4_config_unpack.py）
 
-使用说明：把cg1_2026_08_10.swf（以本周为例）下载到这个文件夹，并且改名成cg1.swf即可
+功能：一键完成 SWF 块解压 → XML 导出 → JSON 转换。
+依赖：仅 Python 标准库，Python 3.8 及以上。
+
+一、用法
+把配置 SWF 放到本目录，运行：
+    python zm4_config_unpack.py cg1_20261026_1.swf
+
+指定输出目录：
+    python zm4_config_unpack.py cg1_20261026_1.swf output_cg1_20261026_1
+
+默认输出到 output_<文件名>/。每个块导出为 NNN_<表名>.xml.txt，
+XML 会再转换成同名的 .json 文件；AMF/二进制块保留 .amf/.bin。
+
+二、初始文件下载地址（2026-11-02 核对）
+入口页：
+https://www.4399.com/flash/zmhj.htm?g=4
+
+当前版本游戏页（入口页 game_url_arr[4]）：
+https://sda.4399.com/4399swf/upload_swf/ftp15/csya/20150127/1/v5880gg.htm
+
+主文件（游戏 SWF，当前 v5880）：
+https://sda.4399.com/4399swf/upload_swf/ftp15/csya/20150127/1/v5880.swf
+
+配置目录：
+https://sda.4399.com/4399swf/upload_swf/ftp15/csya/20150127/1/assets/data/
+
+当前配置（2026-10-26，实测 1,802,385 字节）：
+https://sda.4399.com/4399swf/upload_swf/ftp15/csya/20150127/1/assets/data/cg1_20261026_1.swf
+
+注意：主文件和配置都需要带版本游戏页作 Referer 下载，否则服务器只返回
+23 KB 的域名校验占位 SWF；从游戏页正常进入下载即可。版本号和配置日期会
+随游戏更新变化，主文件以入口页 game_url_arr[4] 指向的版本页为准。
+
+三、示例
+本目录的 cg1.swf 为仓库自带示例。最新配置 cg1_20261026_1.swf 实测：
+256 个块全部解压，250 个 XML 全部转为 JSON，0 失败。
