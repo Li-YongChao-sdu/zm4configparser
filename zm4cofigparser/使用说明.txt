@@ -33,6 +33,18 @@ https://sda.4399.com/4399swf/upload_swf/ftp15/csya/20150127/1/assets/data/cg1_20
 23 KB 的域名校验占位 SWF；从游戏页正常进入下载即可。版本号和配置日期会
 随游戏更新变化，主文件以入口页 game_url_arr[4] 指向的版本页为准。
 
-三、示例
+三、反编译主文件（可选）
+主文件是 SWF，可用 FFDec（JPEXS Free Flash Decompiler）反编译为 ActionScript 文件：
+项目仓库：https://github.com/jindrapetrik/jpexs-decompiler
+发布下载：https://github.com/jindrapetrik/jpexs-decompiler/releases
+
+GUI 方式：用 FFDec 打开 v5880.swf，选择“工具 → 导出 → 导出脚本”，
+或右键选择导出 AS3。
+命令行示例（Windows）：
+    ffdec.bat -export script .\as_out .\v5880.swf
+
+导出的 .as 文件可用于对照配置表结构；本工具只解析配置，不修改主文件。
+
+四、示例
 本目录的 cg1.swf 为仓库自带示例。最新配置 cg1_20261026_1.swf 实测：
 256 个块全部解压，250 个 XML 全部转为 JSON，0 失败。
